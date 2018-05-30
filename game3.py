@@ -15,5 +15,5 @@ while True:
     y = y - 4
   if game.key(game.KEY_DOWN):
     y = y + 4
-  game.draw(gunmanUP, x, y)
+  game.draw(gunman, x, y)
   game.update()
