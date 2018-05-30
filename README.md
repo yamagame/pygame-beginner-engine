@@ -6,7 +6,7 @@ I tested with Raspberry Pi.
 
 ## Sample Code
 
-```
+```python
 import gamesys
 
 # create new window that title is 'GUNMAN'. default FPS is 2.
