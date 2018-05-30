@@ -9,12 +9,27 @@ fpsClock = pygame.time.Clock()
 class GameSys:
   TYPE_SURF = 'surface'
   TYPE_FILLRECT = 'fillrect'
+  
+  KEY_UP='KEY_UP'
+  KEY_DOWN='KEY_DOWN'
+  KEY_LEFT='KEY_LEFT'
+  KEY_RIGHT='KEY_RIGHT'
+  KEY_SPACE='KEY_SPACE'
+  
+  keyCode = {
+    KEY_UP: K_UP,
+    KEY_DOWN: K_DOWN,
+    KEY_LEFT: K_LEFT,
+    KEY_RIGHT: K_RIGHT,
+    KEY_SPACE: K_SPACE,
+  }
 
   # コンストラクタ
   def __init__(self, title, fps=2, screenWidth=1024, screenHeight=768):
     pygame.init()
     self.screen = pygame.display.set_mode((screenWidth, screenHeight))
     pygame.display.set_caption(title)
+    self.keyPressed = pygame.key.get_pressed();
     # フレームレート
     self.FPS = fps
     # 背景の色
@@ -63,6 +78,10 @@ class GameSys:
   def file(self, filename):
     return os.path.join('resources', filename)
   
+  # キー入力判定
+  def key(self, keyCode):
+    return self.keyPressed[self.keyCode[keyCode]]
+  
   # BGM用
   def music(self, music):
     class Music:
@@ -95,6 +114,7 @@ class GameSys:
     pygame.display.update()
     fpsClock.tick(self.FPS)
     self.sprites = []
+    self.keyPressed = pygame.key.get_pressed();
 
 def init(title, fps=2, screenWidth=1024, screenHeight=768):
   return GameSys(title, fps, screenWidth, screenHeight)
