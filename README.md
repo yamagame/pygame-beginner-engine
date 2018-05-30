@@ -2,6 +2,8 @@
 
 I tested with Raspberry Pi.
 
+![screenshot.png](screenshot.png)
+
 ## Sample Code
 
 ```
