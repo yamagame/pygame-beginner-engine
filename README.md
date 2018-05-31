@@ -38,7 +38,7 @@ while True:
 
 ### game.draw(surface, x, y)
 
-  画面に画像(サーフェース)を描画します。
+  画面に画像(サーフェース)を描画します。
 
   ```python
   import gamesys
@@ -52,7 +52,7 @@ while True:
 
 ### game.fillRect(color, rect)
 
-  画面に四角を描画します。
+  画面に四角を描画します。
 
   ```python
   import gamesys
