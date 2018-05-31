@@ -149,7 +149,7 @@ while True:
 
 ### game.file(filename) => String
 
-  リソースフォルダ内のファイルのファイルパスを返します。
+  リソースフォルダ内のファイルのファイルパスを返します。
   ゲームに使用する画像やサウンド関連のファイルは、resourcesフォルダに入れます。
 
 ### game.key(keyCode) => Bool
