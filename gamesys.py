@@ -25,15 +25,13 @@ class GameSys:
   }
 
   # コンストラクタ
-  def __init__(self, title, fps=2, screenWidth=1024, screenHeight=768):
+  def __init__(self, title, fps=2, size=(1024, 768)):
     pygame.init()
-    self.screen = pygame.display.set_mode((screenWidth, screenHeight))
+    self.screen = pygame.display.set_mode(size)
     pygame.display.set_caption(title)
     self.keyPressed = pygame.key.get_pressed();
     # フレームレート
     self.FPS = fps
-    # 背景の色
-    self.bgColor = (255, 255, 255)
     # キャラクタ用のリスト
     self.sprites = []
   
@@ -51,7 +49,7 @@ class GameSys:
 
   # Surfaceの作成
   def surface(self, size=(32, 32)):
-    return pygame.Surface(size).convert_alpha()
+    return pygame.Surface(size, pygame.SRCALPHA, 32).convert_alpha()
   
   # 矩形の塗りつぶし
   def fill(self, surface, color=(0,0,0), rect=(0,0,32,32), special_flags=0):
@@ -99,12 +97,12 @@ class GameSys:
     return pygame.mixer.Sound(sound)
   
   # 画面の更新
-  def update(self):
+  def update(self, bgColor=(255, 255, 255)):
     for event in pygame.event.get():
       if event.type == QUIT:
         pygame.quit()
         sys.exit()
-    self.screen.fill(self.bgColor)
+    self.screen.fill(bgColor)
     for obj in self.sprites:
       if (obj['type'] == GameSys.TYPE_SURF):
         self.screen.blit(obj['surface'], (obj['x'], obj['y']))
@@ -116,5 +114,5 @@ class GameSys:
     self.sprites = []
     self.keyPressed = pygame.key.get_pressed();
 
-def init(title, fps=2, screenWidth=1024, screenHeight=768):
-  return GameSys(title, fps, screenWidth, screenHeight)
+def init(title, fps=2, size=(1024, 768)):
+  return GameSys(title, fps, size)
